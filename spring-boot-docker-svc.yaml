@@ -1,16 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: spring-boot-docker
+  name: spring-boot-docker-service
 spec:
-  ports:
-  - port: 8099
-    targetPort: http
-    protocol: TCP
-    name: http
   selector:
     app: spring-boot-docker
-  externalTrafficPolicy: Cluster
-  sessionAffinity: None
+  ports:
+    - port: 8080
+      targetPort: 8099
   type: LoadBalancer
-
