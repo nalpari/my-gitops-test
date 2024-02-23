@@ -1,10 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-docker
+  name: spring-boot-docker-deployment
+  labels:
+    app: spring-boot-docker
 spec:
-  replicas: 1
-  revisionHistoryLimit: 3
+  replicas: 3
   selector:
     matchLabels:
       app: spring-boot-docker
@@ -14,8 +15,7 @@ spec:
         app: spring-boot-docker
     spec:
       containers:
-      - image: swyoo/spring-boot-docker
-        name: spring-boot-docker
+      - name: spring-boot-docker
+        image: swyoo/spring-boot-docker
         ports:
         - containerPort: 8080
-
